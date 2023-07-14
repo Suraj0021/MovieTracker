@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="movies"
+            type="com.suraj.movietracker.db.SaveMovieData" />
+    </data>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="@dimen/_10ssp"
+        app:cardCornerRadius="@dimen/_10ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10ssp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/imgMoviePoster"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_weight="2.3"
+                android:id="@+id/txtMovieName"
+                android:text="@{movies.title}"
+                android:textColor="@color/white"
+                android:background="#B5000000"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="@dimen/_40ssp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgSave"
+                    android:layout_width="@dimen/_40ssp"
+                    android:layout_height="@dimen/_40ssp"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/_5ssp"
+                    android:src="@drawable/ic_save"
+                    android:padding="@dimen/_5ssp" />
+
+                <TextView
+                    android:layout_alignTop="@id/imgSave"
+                    android:id="@+id/txtMovieDescription"
+                    android:layout_marginTop="@dimen/_40ssp"
+                    android:text="@{movies.overview}"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10ssp"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
