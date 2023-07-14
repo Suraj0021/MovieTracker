@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.suraj.movietracker.databinding.FragmentNowPlayingBinding
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.di.MovieApplication
 import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.repositary.MoviesRepository
@@ -26,7 +25,7 @@ import javax.inject.Inject
 class NowPlayingFragment : Fragment() {
 
     private var moviesList = ArrayList<MovieData>()
-    private var movieSavedList = ArrayList<SaveMovieData>()
+    private var movieSavedList = ArrayList<MovieData>()
     private lateinit var binding: FragmentNowPlayingBinding
     private lateinit var moviesAdapter: MoviesAdapter
     private lateinit var movieViewModel: MovieViewModel
@@ -120,10 +119,9 @@ class NowPlayingFragment : Fragment() {
                 moviesAdapter.addAll(movies)
             }
         }
-
-
-
     }
+
+
 
     private fun searchMovies() {
 
@@ -151,7 +149,6 @@ class NowPlayingFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable?) {}
-
         })
     }
 
@@ -169,7 +166,7 @@ class NowPlayingFragment : Fragment() {
             movieViewModel.deleteMovieById(id)
         }
 
-        override fun addVenue(saveMovieData: SaveMovieData) {
+        override fun addVenue(saveMovieData: MovieData) {
             movieViewModel.saveMovie(saveMovieData)
         }
     }

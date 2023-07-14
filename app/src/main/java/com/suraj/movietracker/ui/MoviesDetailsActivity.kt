@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import com.suraj.movietracker.R
 import com.suraj.movietracker.databinding.ActivityMoviesDetailsBinding
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.di.MovieApplication
 import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.repositary.MoviesRepository
@@ -17,14 +16,13 @@ import javax.inject.Inject
 
 class MoviesDetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMoviesDetailsBinding
-
+    private lateinit var binding:ActivityMoviesDetailsBinding
     @Inject
     lateinit var moviesRepository: MoviesRepository
 
     private lateinit var movieViewModel: MovieViewModel
 
-    private var savedMoviesList = ArrayList<SaveMovieData>()
+    private var savedMoviesList = ArrayList<MovieData>()
 
     private lateinit var movieData: MovieData
 
@@ -34,8 +32,6 @@ class MoviesDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         (application as MovieApplication).movieComponent.inject(this)
-
-
 
         movieData = intent.getSerializableExtra("moviesData") as MovieData
 
@@ -51,8 +47,6 @@ class MoviesDetailsActivity : AppCompatActivity() {
             viewModelStore,
             ViewModelFactory(moviesRepository)
         ).get(MovieViewModel::class.java)
-
-
 
         movieViewModel.savedMoviesList.observe(this) { savedMovies ->
 
@@ -74,7 +68,7 @@ class MoviesDetailsActivity : AppCompatActivity() {
                         binding.imgSave.setImageResource(R.drawable.ic_notsave)
                     } else {
                         movieViewModel.saveMovie(
-                            SaveMovieData(
+                            MovieData(
                                 movieData.id,
                                 movieData.original_language,
                                 movieData.original_title,
@@ -97,8 +91,8 @@ class MoviesDetailsActivity : AppCompatActivity() {
 
     }
 
-    fun isSave(savedMoviesList: ArrayList<SaveMovieData>): Boolean {
-        for (m in this.savedMoviesList) {
+    fun isSave(savedMoviesList2: ArrayList<MovieData>): Boolean {
+        for (m in savedMoviesList2) {
             if (m != null && m.id == movieData.id) {
                 return true
             }

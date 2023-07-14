@@ -15,7 +15,6 @@ import com.suraj.movietracker.R
 import com.suraj.movietracker.apiService.ApiService
 import com.suraj.movietracker.databinding.FragmentNowPlayingBinding
 import com.suraj.movietracker.databinding.FragmentUpcomingBinding
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.di.MovieApplication
 import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.repositary.MoviesRepository
@@ -29,7 +28,7 @@ class UpcomingFragment : Fragment() {
 
     private var moviesList = ArrayList<MovieData>()
 
-    private var movieSavedList = ArrayList<SaveMovieData>()
+    private var movieSavedList = ArrayList<MovieData>()
 
     private lateinit var binding: FragmentUpcomingBinding
 
@@ -143,7 +142,7 @@ class UpcomingFragment : Fragment() {
             movieViewModel.deleteMovieById(id)
         }
 
-        override fun addVenue(saveMovieData: SaveMovieData) {
+        override fun addVenue(saveMovieData: MovieData) {
             movieViewModel.saveMovie(saveMovieData)
         }
 

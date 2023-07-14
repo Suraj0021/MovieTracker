@@ -5,7 +5,7 @@
     <data>
         <variable
             name="movies"
-            type="com.suraj.movietracker.db.SaveMovieData" />
+            type="com.suraj.movietracker.module.MovieData" />
     </data>
     <androidx.cardview.widget.CardView
         app:cardElevation="@dimen/_10ssp"

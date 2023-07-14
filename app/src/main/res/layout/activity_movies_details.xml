@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingBottom="@dimen/_50ssp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_50ssp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -68,19 +68,157 @@
                         android:id="@+id/txtMovieName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
                         android:background="?attr/colorPrimaryDark"
                         android:gravity="center"
+                        android:padding="5dp"
                         android:text="@{movieData.title}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_20ssp" />
 
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80ssp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_margin="5dp"
+                                android:padding="@dimen/_5ssp">
+
+
+                                <TextView
+                                    android:id="@+id/txtPopularity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{Double.toString(movieData.popularity)}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Popularity"
+                                    android:textColor="?attr/colorPrimaryDark"
+                                    android:textSize="@dimen/_14ssp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="?attr/colorPrimaryDark" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/_5ssp"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5ssp">
+
+
+                                <TextView
+                                    android:id="@+id/txtRelease"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{movieData.release_date}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Release Date"
+                                    android:textColor="?attr/colorPrimaryDark"
+                                    android:textSize="@dimen/_14ssp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="?attr/colorPrimaryDark" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/_5ssp"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5ssp">
+
+
+                                <TextView
+                                    android:id="@+id/txtVote"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{Double.toString(movieData.vote_count)}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Votes"
+                                    android:textColor="?attr/colorPrimaryDark"
+                                    android:textSize="@dimen/_14ssp" />
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="?attr/colorPrimaryDark" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/_5ssp"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5ssp">
+
+
+                                <TextView
+                                    android:id="@+id/txtAvg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{Double.toString(movieData.vote_average)}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Average"
+                                    android:textColor="?attr/colorPrimaryDark"
+                                    android:textSize="@dimen/_14ssp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Overview"
+                            android:textColor="?attr/colorPrimaryDark"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:padding="@dimen/_5ssp"/>
 
                         <TextView
                             android:id="@+id/txtMovieDescription"

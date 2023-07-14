@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.suraj.movietracker.R
 import com.suraj.movietracker.databinding.MovieViewBinding
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.module.MovieData
 
 class MoviesAdapter(
     private val moviesList: ArrayList<MovieData>,
-    private val movieSaveList: ArrayList<SaveMovieData>
+    private val movieSaveList: ArrayList<MovieData>
 ) : RecyclerView.Adapter<MoviesAdapter.MoviesHolder>() {
 
 
@@ -23,7 +22,7 @@ class MoviesAdapter(
 
         fun deleteVenue(id: Int)
 
-        fun addVenue(saveMovieData: SaveMovieData)
+        fun addVenue(saveMovieData: MovieData)
 
     }
 
@@ -85,7 +84,7 @@ class MoviesAdapter(
 
             } else {
 
-                val saveMovieData = SaveMovieData(
+                val saveMovieData = MovieData(
                     data.id,
                     data.original_language,
                     data.original_title,
@@ -120,7 +119,7 @@ class MoviesAdapter(
 
 
 
-    fun addAll(moviesList: List<SaveMovieData>) {
+    fun addAll(moviesList: List<MovieData>) {
 
         movieSaveList.clear()
         movieSaveList.addAll(moviesList)

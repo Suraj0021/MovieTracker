@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.suraj.movietracker.R
 import com.suraj.movietracker.databinding.SavedMovieViewBinding
-import com.suraj.movietracker.db.SaveMovieData
+import com.suraj.movietracker.module.MovieData
 
-class SavedMoviesAdapter(private val movieSaveList: ArrayList<SaveMovieData>) :
+class SavedMoviesAdapter(private val movieSaveList: ArrayList<MovieData>) :
     RecyclerView.Adapter<SavedMoviesAdapter.SavedMoviesHolder>() {
 
 
     interface SetOnClickListener {
-        fun setOnClick(position: Int, data: SaveMovieData)
+        fun setOnClick(position: Int, data: MovieData)
     }
 
     var setOnClickListener: SetOnClickListener? = null
@@ -65,7 +65,7 @@ class SavedMoviesAdapter(private val movieSaveList: ArrayList<SaveMovieData>) :
     override fun getItemCount() = movieSaveList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addAll(moviesList: List<SaveMovieData>) {
+    fun addAll(moviesList: List<MovieData>) {
 
         movieSaveList.clear()
         movieSaveList.addAll(moviesList)

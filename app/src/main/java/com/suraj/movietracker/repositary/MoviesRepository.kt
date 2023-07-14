@@ -3,7 +3,7 @@ package com.suraj.movietracker.repositary
 import androidx.lifecycle.LiveData
 import com.suraj.movietracker.apiService.ApiService
 import com.suraj.movietracker.db.MoviesDao
-import com.suraj.movietracker.db.SaveMovieData
+import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.module.MovieResponse
 import retrofit2.Response
 import javax.inject.Inject
@@ -45,17 +45,18 @@ class MoviesRepository @Inject constructor(
         }
     }
 
-    suspend fun saveMovie(movieData: SaveMovieData) {
+    suspend fun saveMovie(movieData: MovieData) {
         moviesDao.addMovieData(movieData)
     }
 
-    fun getSaveMovieList(): LiveData<List<SaveMovieData>> {
+    fun getSaveMovieList(): LiveData<List<MovieData>> {
         return moviesDao.getMovies()
     }
 
     suspend fun deleteMovieFromId(id: Int) {
         moviesDao.deleteMovieById(id)
     }
+
 
 
     suspend fun searchMovies(query: String, page: Int) : Response<MovieResponse>?{

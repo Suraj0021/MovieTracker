@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.repositary.MoviesRepository
 import kotlinx.coroutines.launch
@@ -16,7 +15,9 @@ class MovieViewModel(private val moviesRepository: MoviesRepository) : ViewModel
     val moviesList: LiveData<List<MovieData>?> get() = _moviesList
 
 
-    var savedMoviesList: LiveData<List<SaveMovieData>> = moviesRepository.getSaveMovieList()
+    var savedMoviesList: LiveData<List<MovieData>> = moviesRepository.getSaveMovieList()
+
+
 
 
     fun getNowPlayingMoviesData(page: Int) {
@@ -51,7 +52,7 @@ class MovieViewModel(private val moviesRepository: MoviesRepository) : ViewModel
         }
     }
 
-    fun saveMovie(saveMovieData: SaveMovieData) {
+    fun saveMovie(saveMovieData: MovieData) {
         viewModelScope.launch {
             moviesRepository.saveMovie(saveMovieData)
         }
@@ -75,6 +76,12 @@ class MovieViewModel(private val moviesRepository: MoviesRepository) : ViewModel
         }
     }
 
+
+
+
+
 }
+
+
 
 

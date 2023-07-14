@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suraj.movietracker.databinding.FragmentFavouriteBinding
-import com.suraj.movietracker.db.SaveMovieData
 import com.suraj.movietracker.di.MovieApplication
+import com.suraj.movietracker.module.MovieData
 import com.suraj.movietracker.repositary.MoviesRepository
+import com.suraj.movietracker.ui.adapter.MoviesAdapter
 import com.suraj.movietracker.ui.adapter.SavedMoviesAdapter
 import com.suraj.movietracker.viewModel.MovieViewModel
 import com.suraj.movietracker.viewModel.ViewModelFactory
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 class FavouriteFragment : Fragment() {
 
-    private var moviesList = ArrayList<SaveMovieData>()
+    private var moviesList = ArrayList<MovieData>()
 
     private lateinit var binding: FragmentFavouriteBinding
 
@@ -51,6 +52,9 @@ class FavouriteFragment : Fragment() {
     }
 
     fun initView(){
+
+
+
         moviesAdapter = SavedMoviesAdapter(moviesList)
 
         moviesAdapter.setOnClickListener = SetOnClickListener()
@@ -76,12 +80,13 @@ class FavouriteFragment : Fragment() {
             moviesAdapter.addAll(it)
 
             binding.swipeRefreshLayout.isRefreshing = false
+
         }
 
     }
 
     inner class SetOnClickListener : SavedMoviesAdapter.SetOnClickListener {
-        override fun setOnClick(position: Int, data: SaveMovieData) {
+        override fun setOnClick(position: Int, data: MovieData) {
 
             movieViewModel.deleteMovieById(data.id)
 

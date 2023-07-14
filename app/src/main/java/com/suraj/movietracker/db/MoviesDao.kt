@@ -14,14 +14,16 @@ import dagger.Module
 interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addMovieData(saveMovieData: SaveMovieData)
+    suspend fun addMovieData(movieData: MovieData)
 
 
     @Query("SELECT * FROM movies")
-    fun getMovies(): LiveData<List<SaveMovieData>>
+    fun getMovies(): LiveData<List<MovieData>>
 
 
     @Query("DELETE FROM movies WHERE id = :movieId")
     suspend fun deleteMovieById(movieId: Int)
+
+
 
 }
